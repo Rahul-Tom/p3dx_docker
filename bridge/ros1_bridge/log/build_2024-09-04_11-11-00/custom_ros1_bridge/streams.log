@@ -1,0 +1,37 @@
+[0.280s] Invoking command in '/ros_bridge/ros1_bridge/src/custom_ros1_bridge': PYTHONPATH=/ros_bridge/ros1_bridge/install/custom_ros1_bridge/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base /ros_bridge/ros1_bridge/build/custom_ros1_bridge build --build-base /ros_bridge/ros1_bridge/build/custom_ros1_bridge/build install --prefix /ros_bridge/ros1_bridge/install/custom_ros1_bridge --record /ros_bridge/ros1_bridge/build/custom_ros1_bridge/install.log --single-version-externally-managed
+[0.511s] running egg_info
+[0.512s] creating /ros_bridge/ros1_bridge/build/custom_ros1_bridge/custom_ros1_bridge.egg-info
+[0.512s] writing /ros_bridge/ros1_bridge/build/custom_ros1_bridge/custom_ros1_bridge.egg-info/PKG-INFO
+[0.513s] writing dependency_links to /ros_bridge/ros1_bridge/build/custom_ros1_bridge/custom_ros1_bridge.egg-info/dependency_links.txt
+[0.513s] writing entry points to /ros_bridge/ros1_bridge/build/custom_ros1_bridge/custom_ros1_bridge.egg-info/entry_points.txt
+[0.513s] writing requirements to /ros_bridge/ros1_bridge/build/custom_ros1_bridge/custom_ros1_bridge.egg-info/requires.txt
+[0.513s] writing top-level names to /ros_bridge/ros1_bridge/build/custom_ros1_bridge/custom_ros1_bridge.egg-info/top_level.txt
+[0.517s] writing manifest file '/ros_bridge/ros1_bridge/build/custom_ros1_bridge/custom_ros1_bridge.egg-info/SOURCES.txt'
+[0.564s] reading manifest file '/ros_bridge/ros1_bridge/build/custom_ros1_bridge/custom_ros1_bridge.egg-info/SOURCES.txt'
+[0.565s] writing manifest file '/ros_bridge/ros1_bridge/build/custom_ros1_bridge/custom_ros1_bridge.egg-info/SOURCES.txt'
+[0.566s] running build
+[0.566s] running build_py
+[0.566s] creating /ros_bridge/ros1_bridge/build/custom_ros1_bridge/build
+[0.566s] creating /ros_bridge/ros1_bridge/build/custom_ros1_bridge/build/lib
+[0.566s] creating /ros_bridge/ros1_bridge/build/custom_ros1_bridge/build/lib/custom_ros1_bridge
+[0.566s] copying custom_ros1_bridge/twist_bridge.py -> /ros_bridge/ros1_bridge/build/custom_ros1_bridge/build/lib/custom_ros1_bridge
+[0.567s] copying custom_ros1_bridge/__init__.py -> /ros_bridge/ros1_bridge/build/custom_ros1_bridge/build/lib/custom_ros1_bridge
+[0.567s] running install
+[0.569s] running install_lib
+[0.571s] creating /ros_bridge/ros1_bridge/install/custom_ros1_bridge/lib/python3.8/site-packages/custom_ros1_bridge
+[0.571s] copying /ros_bridge/ros1_bridge/build/custom_ros1_bridge/build/lib/custom_ros1_bridge/twist_bridge.py -> /ros_bridge/ros1_bridge/install/custom_ros1_bridge/lib/python3.8/site-packages/custom_ros1_bridge
+[0.572s] copying /ros_bridge/ros1_bridge/build/custom_ros1_bridge/build/lib/custom_ros1_bridge/__init__.py -> /ros_bridge/ros1_bridge/install/custom_ros1_bridge/lib/python3.8/site-packages/custom_ros1_bridge
+[0.572s] byte-compiling /ros_bridge/ros1_bridge/install/custom_ros1_bridge/lib/python3.8/site-packages/custom_ros1_bridge/twist_bridge.py to twist_bridge.cpython-38.pyc
+[0.574s] byte-compiling /ros_bridge/ros1_bridge/install/custom_ros1_bridge/lib/python3.8/site-packages/custom_ros1_bridge/__init__.py to __init__.cpython-38.pyc
+[0.574s] running install_data
+[0.575s] creating /ros_bridge/ros1_bridge/install/custom_ros1_bridge/share/ament_index
+[0.575s] creating /ros_bridge/ros1_bridge/install/custom_ros1_bridge/share/ament_index/resource_index
+[0.575s] creating /ros_bridge/ros1_bridge/install/custom_ros1_bridge/share/ament_index/resource_index/packages
+[0.575s] copying resource/custom_ros1_bridge -> /ros_bridge/ros1_bridge/install/custom_ros1_bridge/share/ament_index/resource_index/packages
+[0.576s] copying package.xml -> /ros_bridge/ros1_bridge/install/custom_ros1_bridge/share/custom_ros1_bridge
+[0.576s] running install_egg_info
+[0.578s] Copying /ros_bridge/ros1_bridge/build/custom_ros1_bridge/custom_ros1_bridge.egg-info to /ros_bridge/ros1_bridge/install/custom_ros1_bridge/lib/python3.8/site-packages/custom_ros1_bridge-0.0.0-py3.8.egg-info
+[0.580s] running install_scripts
+[0.606s] Installing twist_bridge script to /ros_bridge/ros1_bridge/install/custom_ros1_bridge/lib/custom_ros1_bridge
+[0.606s] writing list of installed files to '/ros_bridge/ros1_bridge/build/custom_ros1_bridge/install.log'
+[0.650s] Invoked command in '/ros_bridge/ros1_bridge/src/custom_ros1_bridge' returned '0': PYTHONPATH=/ros_bridge/ros1_bridge/install/custom_ros1_bridge/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base /ros_bridge/ros1_bridge/build/custom_ros1_bridge build --build-base /ros_bridge/ros1_bridge/build/custom_ros1_bridge/build install --prefix /ros_bridge/ros1_bridge/install/custom_ros1_bridge --record /ros_bridge/ros1_bridge/build/custom_ros1_bridge/install.log --single-version-externally-managed

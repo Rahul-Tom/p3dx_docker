@@ -1,0 +1,16 @@
+package.xml
+setup.cfg
+setup.py
+/ros_bridge/ros1_bridge/build/custom_ros1_bridge/custom_ros1_bridge.egg-info/PKG-INFO
+/ros_bridge/ros1_bridge/build/custom_ros1_bridge/custom_ros1_bridge.egg-info/SOURCES.txt
+/ros_bridge/ros1_bridge/build/custom_ros1_bridge/custom_ros1_bridge.egg-info/dependency_links.txt
+/ros_bridge/ros1_bridge/build/custom_ros1_bridge/custom_ros1_bridge.egg-info/entry_points.txt
+/ros_bridge/ros1_bridge/build/custom_ros1_bridge/custom_ros1_bridge.egg-info/requires.txt
+/ros_bridge/ros1_bridge/build/custom_ros1_bridge/custom_ros1_bridge.egg-info/top_level.txt
+/ros_bridge/ros1_bridge/build/custom_ros1_bridge/custom_ros1_bridge.egg-info/zip-safe
+custom_ros1_bridge/__init__.py
+custom_ros1_bridge/twist_bridge.py
+resource/custom_ros1_bridge
+test/test_copyright.py
+test/test_flake8.py
+test/test_pep257.py

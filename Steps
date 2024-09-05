@@ -1,0 +1,11 @@
+mkdir -p ~/catkin_ws/src
+cd ~/catkin_ws/src && catkin_init_workspace
+cd ~/catkin_ws
+catkin_make
+cd ~/catkin_ws
+. devel/setup.bash
+cd ~/catkin_ws/src && git clone https://github.com/amor-ros-pkg/rosaria.git
+cd ~/catkin_ws/src && git clone https://github.com/reedhedges/AriaCoda.git
+cd ~/catkin_ws/src/AriaCoda && make
+cd ~/catkin_ws/src/AriaCoda && sudo make install
+cd ~/catkin_ws && catkin_make
