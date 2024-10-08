@@ -2,6 +2,7 @@
 set -e # setup environment
 source $HOME/.bashrc # start in home directory 
 cd  
+roscore &
 exec bash -i -c $@
 # Adding all the necessary ros sourcing
 echo "" >> ~/.bashrc

@@ -12,7 +12,8 @@ RUN apt-get update && apt-get install -y \
     bash-completion \
     build-essential \
     sudo \
-    doxygen \
+    ros-humble-navigation2 \
+    ros-humble-nav2-bringup\
     && rm -rf /var/lib/apt/lists/*
 
 # Create the same user as the host itself
@@ -33,10 +34,18 @@ RUN mkdir -p ${HOME}/humble_ws/src
 # USER ros 
 # # Change HOME environment variable
 # ENV HOME /home/${USER} 
-WORKDIR /humble
+# WORKDIR /humble
+# RUN mkdir humble
 # WORKDIR ${HOME}/humble_ws/bin/bash -c "source source /opt/ros/${ROS_DISTRO}/setup.bash; colcon build --symlink-install"
+# WORKDIR ${HOME}/humble_ws 
+# RUN /bin/bash -c "source source /opt/ros/humble/setup.bash;colcon build --symlink-install"
+WORKDIR ${HOME}/humble_ws/src
+RUN /bin/bash -c "git clone https://github.com/ros2/teleop_twist_joy.git"
+# WORKDIR ${HOME}/humble_ws/src
+# RUN /bin/bash -c "git clone https://github.com/ros-navigation/navigation2.git"
 WORKDIR ${HOME}/humble_ws 
-RUN /bin/bash -c "colcon build --symlink-install"
+RUN /bin/bash -c "source /opt/ros/humble/setup.bash;colcon build --symlink-install"
+
 # Initialize the catkin workspace
 # WORKDIR ${HOME}/humble_ws/src
 # WORKDIR ${HOME}/humble_ws/

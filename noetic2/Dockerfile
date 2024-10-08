@@ -6,6 +6,7 @@ FROM ${BASE_IMAGE}:${BASE_TAG}
 ENV DEBIAN_FRONTEND=noninteractive
 ENV HOME=/home/ros
 
+#Installs necessary tools
 RUN apt-get update && apt-get install -y \
     wget \
     git \
@@ -18,9 +19,10 @@ RUN apt-get update && apt-get install -y \
 # Create the same user as the host itself
 ARG UID=1000
 ARG GID=1000
-RUN addgroup --gid ${GID} ros && \
-    adduser --gecos "ROS User" --disabled-password --uid ${UID} --gid ${GID} ros && \
-    usermod -a -G dialout ros
+ARG USER=ros
+RUN addgroup --gid ${GID} ${USER} && \
+    adduser --gecos "ROS User" --disabled-password --uid ${UID} --gid ${GID} ${USER} && \
+    usermod -a -G dialout ${USER}
 
 # Add sudo permissions
 ADD config/99_aptget /etc/sudoers.d/99_aptget
@@ -28,13 +30,9 @@ RUN chmod 0440 /etc/sudoers.d/99_aptget && chown root:root /etc/sudoers.d/99_apt
 
 # Create the workspace
 RUN mkdir -p ${HOME}/ros_ws/src
-
 # Initialize the catkin workspace
 WORKDIR ${HOME}/ros_ws/src
-#RUN /bin/bash -c "source /opt/ros/noetic/setup.bash; catkin_init_workspace; catkin_init_workspace"
 RUN /bin/bash -c "source /opt/ros/noetic/setup.bash; catkin_init_workspace"
-
-
 # Build the workspace
 WORKDIR ${HOME}/ros_ws
 RUN /bin/bash -c "source /opt/ros/noetic/setup.bash; catkin_make"
@@ -69,8 +67,6 @@ RUN sudo chmod +x /ros_entrypoint.sh && sudo chown ros /ros_entrypoint.sh
 
 # Clean image
 RUN sudo apt-get clean && sudo rm -rf /var/lib/apt/lists/*
-
-#RUN /bin/bash -c "source /opt/ros/noetic/setup.bash; roscore"
 
 ENTRYPOINT ["/ros_entrypoint.sh"]
 CMD ["bash"]

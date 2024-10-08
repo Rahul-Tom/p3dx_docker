@@ -6,6 +6,7 @@ FROM ${BASE_IMAGE}:${BASE_TAG}
 ENV DEBIAN_FRONTEND=noninteractive
 ENV HOME=/home/ros
 
+
 RUN apt-get update && apt-get install -y \
     wget \
     git \
