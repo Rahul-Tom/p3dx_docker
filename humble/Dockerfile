@@ -1,10 +1,11 @@
 ARG BASE_IMAGE=osrf/ros
-ARG BASE_TAG=humble-desktop-full
+ARG ROS_DISTRO=humble
 
-FROM ${BASE_IMAGE}:${BASE_TAG}
+FROM ${BASE_IMAGE}:${ROS_DISTRO}-desktop-full
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV HOME=/home/ros
+ARG USER_NAME=tom
+ENV HOME=/home/${USER_NAME}
 
 RUN apt-get update && apt-get install -y \
     wget \
@@ -12,16 +13,16 @@ RUN apt-get update && apt-get install -y \
     bash-completion \
     build-essential \
     sudo \
-    ros-humble-navigation2 \
-    ros-humble-nav2-bringup\
+    ros-${ROS_DISTRO}-navigation2 \
+    ros-${ROS_DISTRO}-nav2-bringup\
     && rm -rf /var/lib/apt/lists/*
 
 # Create the same user as the host itself
 ARG UID=1000
 ARG GID=1000
-RUN addgroup --gid ${GID} ros && \
-    adduser --gecos "ROS User" --disabled-password --uid ${UID} --gid ${GID} ros && \
-    usermod -a -G dialout ros
+RUN addgroup --gid ${GID} ${USER_NAME} && \
+    adduser --gecos "ROS User" --disabled-password --uid ${UID} --gid ${GID} ${USER_NAME} && \
+    usermod -a -G dialout ${USER_NAME}
 
 # Add sudo permissions
 ADD config/99_aptget /etc/sudoers.d/99_aptget
@@ -39,8 +40,8 @@ RUN mkdir -p ${HOME}/humble_ws/src
 # WORKDIR ${HOME}/humble_ws/bin/bash -c "source source /opt/ros/${ROS_DISTRO}/setup.bash; colcon build --symlink-install"
 # WORKDIR ${HOME}/humble_ws 
 # RUN /bin/bash -c "source source /opt/ros/humble/setup.bash;colcon build --symlink-install"
-WORKDIR ${HOME}/humble_ws/src
-RUN /bin/bash -c "git clone https://github.com/ros2/teleop_twist_joy.git"
+# WORKDIR ${HOME}/humble_ws/src
+# RUN /bin/bash -c "git clone https://github.com/ros2/teleop_twist_joy.git"
 # WORKDIR ${HOME}/humble_ws/src
 # RUN /bin/bash -c "git clone https://github.com/ros-navigation/navigation2.git"
 WORKDIR ${HOME}/humble_ws 
@@ -55,11 +56,11 @@ RUN /bin/bash -c "source /opt/ros/humble/setup.bash;colcon build --symlink-insta
 
 # Set up environment
 COPY config/update_bashrc /sbin/update_bashrc
-RUN sudo chmod +x /sbin/update_bashrc && sudo chown ros /sbin/update_bashrc && sync && /bin/bash -c /sbin/update_bashrc && sudo rm /sbin/update_bashrc
+RUN sudo chmod +x /sbin/update_bashrc && sudo chown ${USER_NAME} /sbin/update_bashrc && sync && /bin/bash -c /sbin/update_bashrc && sudo rm /sbin/update_bashrc
 
 # Change entrypoint to source ~/.bashrc and start in ~
 COPY config/entrypoint.sh /ros_entrypoint.sh
-RUN sudo chmod +x /ros_entrypoint.sh && sudo chown ros /ros_entrypoint.sh
+RUN sudo chmod +x /ros_entrypoint.sh && sudo chown ${USER_NAME} /ros_entrypoint.sh
 
 # Clean image
 RUN sudo apt-get clean && sudo rm -rf /var/lib/apt/lists/*
