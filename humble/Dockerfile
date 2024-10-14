@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
     sudo \
     ros-${ROS_DISTRO}-navigation2 \
     ros-${ROS_DISTRO}-nav2-bringup\
+    ros-${ROS_DISTRO}-robot-localization\
     && rm -rf /var/lib/apt/lists/*
 
 # Create the same user as the host itself
@@ -43,7 +44,8 @@ RUN mkdir -p ${HOME}/humble_ws/src
 # WORKDIR ${HOME}/humble_ws/src
 # RUN /bin/bash -c "git clone https://github.com/ros2/teleop_twist_joy.git"
 # WORKDIR ${HOME}/humble_ws/src
-# RUN /bin/bash -c "git clone https://github.com/ros-navigation/navigation2.git"
+# RUN /bin/bash -c "git clone https://github.com/ruipaulorocha/p3dx_description_ros.git"
+# RUN /bin/bash -c "git clone https://github.com/Rahul-Tom/ros2_p3dx_ws.git"
 WORKDIR ${HOME}/humble_ws 
 RUN /bin/bash -c "source /opt/ros/humble/setup.bash;colcon build --symlink-install"
 

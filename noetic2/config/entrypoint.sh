@@ -30,17 +30,19 @@ roscore_pid=$!
 sleep 5
 
 # Start MobileSim in the background
-MobileSim -m /usr/local/MobileSim/columbia.map -r p3dx &
-mobilesim_pid=$!
+# MobileSim -m /usr/local/MobileSim/columbia.map -r p3dx &
+# mobilesim_pid=$!
 
 # Wait for MobileSim to start
 sleep 2
 
 # Start RosAria node
-# rosrun rosaria RosAria
+rosrun rosaria RosAria _port:=/dev/ttyUSB0
+
 
 # Wait for any additional passed command, if provided
 exec "$@"
 
 # Ensure that when the script exits, both roscore and MobileSim are killed
-trap 'kill -TERM $roscore_pid $mobilesim_pid' EXIT
+# trap 'kill -TERM $roscore_pid $mobilesim_pid' EXIT
+trap 'kill -TERM $roscore_pid pid' EXIT

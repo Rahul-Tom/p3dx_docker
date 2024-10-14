@@ -17,7 +17,7 @@ services:
     ipc: host
     tty: true
     stdin_open: true
-    command: rosrun rosaria RosAria
+    command: bash #rosrun rosaria RosAria
 
   ros_indigo:
     privileged: true
@@ -53,6 +53,7 @@ services:
     ipc: host
     tty: true
     stdin_open: true
+    # command: colcon build
     command: tail -f /dev/null
 
   ros2_foxy_bridge:
@@ -69,6 +70,7 @@ services:
     tty: true
     stdin_open: true
     command: tail -f /dev/null
+    #source /opt/ros/noetic/setup.bash && rosparam load bridge.yaml && source /opt/ros/foxy/setup.bash && ros2 run ros1_bridge parameter_bridge #
     
 volumes:
   my_src_volume:

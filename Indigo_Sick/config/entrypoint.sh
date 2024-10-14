@@ -21,9 +21,9 @@ fi
 
 # Move to home directory
 cd $HOME
-
+sleep 3 ## time to turn on ROS Master
 #run the sick driver
-# rosrun sicktoolbox_wrapper sicklms _port:=/dev/ttyUSB1
+rosrun sicktoolbox_wrapper sicklms _port:=/dev/ttyUSB1 _baud:=38400
 
 # Wait for any additional passed command, if provided
 exec "$@"

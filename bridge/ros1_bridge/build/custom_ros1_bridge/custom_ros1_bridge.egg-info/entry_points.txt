@@ -1,3 +1,0 @@
-[console_scripts]
-twist_bridge = custom_ros1_bridge.twist_bridge:main
-
