@@ -1,6 +1,10 @@
+# For deployment in RPi with amr 64 architecture
+# ARG BASE_IMAGE=arm64v8/ros
+# ARG ROS_DISTRO=humble
+# FROM ${BASE_IMAGE}:${ROS_DISTRO}-perception-jammy
+# For development in Laptop with amd64 architecture
 ARG BASE_IMAGE=osrf/ros
 ARG ROS_DISTRO=humble
-
 FROM ${BASE_IMAGE}:${ROS_DISTRO}-desktop-full
 
 ENV DEBIAN_FRONTEND=noninteractive

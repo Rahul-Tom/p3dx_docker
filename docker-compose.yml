@@ -4,7 +4,7 @@ services:
   ros_noetic:
     privileged: true
     build:
-      context: ./noetic2
+      context: ./noetic
       dockerfile: Dockerfile
     container_name: noetic_rosaria
     environment:
@@ -19,12 +19,12 @@ services:
     stdin_open: true
     command: bash #rosrun rosaria RosAria
 
-  ros_indigo:
+  ros_kinetic:
     privileged: true
     build:
-      context: ./Indigo_Sick
+      context: ./kinetic
       dockerfile: Dockerfile
-    container_name: indigo_sick
+    container_name: kinetic_sick
     environment:
       - ROS_MASTER_URI=http://localhost:11311
       - DISPLAY=${DISPLAY}
