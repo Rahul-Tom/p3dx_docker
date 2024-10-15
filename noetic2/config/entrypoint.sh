@@ -30,7 +30,7 @@ roscore_pid=$!
 sleep 5
 
 # Start MobileSim in the background
-# MobileSim -m /usr/local/MobileSim/columbia.map -r p3dx &
+# MoleSim -m /usr/local/MobileSim/columbia.map -r p3dx &
 # mobilesim_pid=$!
 
 # Wait for MobileSim to start
