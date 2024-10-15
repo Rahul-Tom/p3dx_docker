@@ -47,7 +47,7 @@ RUN /bin/bash -c "make"
 WORKDIR ${HOME}/ros_ws/src/AriaCoda
 RUN /bin/bash -c "sudo make install"
 WORKDIR ${HOME}/ros_ws/src/
-RUN /bin/bash -c "git clone https://github.com/pengtang/rosaria_client.git"
+# RUN /bin/bash -c "git clone https://github.com/pengtang/rosaria_client.git" #incompatbile with arm64
 WORKDIR ${HOME}/ros_ws/
 RUN /bin/bash -c "source devel/setup.bash; catkin_make"
 WORKDIR ${HOME}/ros_ws/
