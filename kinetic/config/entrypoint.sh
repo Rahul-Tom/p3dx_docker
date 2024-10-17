@@ -2,10 +2,10 @@
 set -e  # Exit immediately if any command fails
 
 # Source the ROS Noetic environment and workspace setup files
-if [ -f /opt/ros/indigo/setup.bash ]; then
-    source /opt/ros/indigo/setup.bash
+if [ -f /opt/ros/kinetic/setup.bash ]; then
+    source /opt/ros/kinetic/setup.bash
 else
-    echo "ROS setup.bash not found in /opt/ros/indigo. Exiting."
+    echo "ROS setup.bash not found in /opt/ros/kinetic. Exiting."
     exit 1
 fi
 

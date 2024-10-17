@@ -1,6 +1,3 @@
-# For deployment in RPi with amr 64 architecture
-# ARG BASE_IMAGE=arm64v8/ros
-# ARG BASE_TAG=noetic-robot
 # For development in Laptop with amd64 architecture
 ARG BASE_IMAGE=osrf/ros
 ARG BASE_TAG=noetic-desktop-full
