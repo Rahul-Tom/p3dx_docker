@@ -1,0 +1,81 @@
+version: '3.2'
+
+services:
+  ros_noetic:
+    privileged: true
+    build:
+      context: RPi_Docker_files_arm64/noetic
+      dockerfile: Dockerfile
+    container_name: noetic_rosaria
+    environment:
+      - ROS_MASTER_URI=http://localhost:11311
+      - DISPLAY=${DISPLAY}
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /dev/bus/usb:/dev/bus/usb
+    network_mode: host
+    ipc: host
+    tty: true
+    stdin_open: true
+    command: bash #rosrun rosaria RosAria
+
+  ros_kinetic:
+    privileged: true
+    build:
+      context: RPi_Docker_files_arm64/kinetic
+      dockerfile: Dockerfile
+    container_name: kinetic_sick
+    environment:
+      - ROS_MASTER_URI=http://localhost:11311
+      - DISPLAY=${DISPLAY}
+    volumes:
+      - /dev/bus/usb:/dev/bus/usb
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    network_mode: host
+    ipc: host
+    tty: true
+    stdin_open: true
+    command: tail -f /dev/null
+
+  ros2_humble:
+    build:
+      context: RPi_Docker_files_arm64/humble
+      dockerfile: Dockerfile
+    container_name: ros2_humble_container
+    environment:
+      - DISPLAY=${DISPLAY} 
+    volumes:
+      - my_src_volume:/home/tom/humble_ws/src:rw
+      - /dev/bus/usb:/dev/bus/usb
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      
+    network_mode: host
+    ipc: host
+    tty: true
+    stdin_open: true
+    # command: colcon build
+    command: tail -f /dev/null
+
+  ros2_foxy_bridge:
+    build:
+      context: RPi_Docker_files_arm64/bridge
+      dockerfile: Dockerfile
+    container_name: foxy_bridge_container
+    environment:
+      - ROS_MASTER_URI=http://localhost:11311
+    volumes:
+      - ./bridge/source:/ros_bridge
+    network_mode: host
+    ipc: host
+    tty: true
+    stdin_open: true
+    command: tail -f /dev/null
+    #source /opt/ros/noetic/setup.bash && rosparam load bridge.yaml && source /opt/ros/foxy/setup.bash && ros2 run ros1_bridge parameter_bridge #
+    
+volumes:
+  my_src_volume:
+    driver: local  # Using local driver, by default
+    driver_opts:
+      type: none
+      o: bind
+      device: ${PWD}/humble/source  # Host machine's source directory    
